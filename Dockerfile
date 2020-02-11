@@ -59,7 +59,7 @@ RUN cd ruby-2.7.0 && ./configure && make && make test && make install
 RUN gem install bundler
 
 # Kotlin
-RUN apt-get -y install unzip
+RUN apt-get -y install unzip zip
 RUN echo | openssl s_client -showcerts -servername get.sdkman.io -connect get.sdkman.io:443 2>/dev/null | awk '/-----BEGIN CERTIFICATE-----/, /-----END CERTIFICATE-----/' >> /usr/local/share/ca-certificates/ca-certificates.crt  && update-ca-certificates
 RUN curl -s https://get.sdkman.io | bash
 RUN /bin/bash -c "source /root/.sdkman/bin/sdkman-init.sh && sdk install kotlin"
